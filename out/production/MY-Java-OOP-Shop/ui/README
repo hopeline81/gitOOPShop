@@ -1,0 +1,4 @@
+Add all UI-related classes here
+This includes all classes that print text in the console
+as well as classes which take care of modifying the list
+of products, stored locally within the program

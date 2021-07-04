@@ -1,0 +1,3 @@
+Add all classes that operate with external data
+This includes all classes that read and write to/from the
+csv file and convert data from text to list of objects and vice versa
