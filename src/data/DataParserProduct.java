@@ -76,12 +76,14 @@ public class DataParserProduct {
             result = product.getProductID() + ", "
                     + product.getProductName() + ", "
                     + product.getProductPrice() + ", "
+                    + product.getQuantity() + ", "
                     + TYPE_FOOD + ",,"
                     + ((Food) product).getExpiration_date();
         }else if(product instanceof Makeup) {
             result = product.getProductID() + ", "
                     + product.getProductName() + ", "
                     + product.getProductPrice() + ", "
+                    + product.getQuantity() + ", "
                     + TYPE_MAKEUP + ", "
                     + ((Makeup) product).getColor() + ", "
                     + ((Makeup) product).getExpiration_date();
@@ -89,12 +91,14 @@ public class DataParserProduct {
             result = product.getProductID() + ", "
                     + product.getProductName() + ", "
                     + product.getProductPrice() + ", "
+                    + product.getQuantity() + ", "
                     + TYPE_OTHERS + ", "
                     + ((Others) product).getColor() + ", ";
         }else if(product instanceof Sanitary) {
             result = product.getProductID() + ", "
                     + product.getProductName() + ", "
                     + product.getProductPrice() + ", "
+                    + product.getQuantity() + ", "
                     + TYPE_SANITARY + ",,";
         }
         return result;

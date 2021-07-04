@@ -29,7 +29,7 @@ public class MenuManager {
                 case 2:controllerProduct.printAllProductsSortedByNamePriceOrDate();
                     break;
                 case 3:
-                    controllerProduct.printSpecificProductByIdAndName();
+                    controllerProduct.printSpecificProductById();
                     break;
                 case 4:
                     controllerProduct.printProductsWithPriceHigherOrEqualToUserSetPrice();

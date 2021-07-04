@@ -6,7 +6,7 @@ public class PrintMenu {
         System.out.println("\nPLEASE, CHOOSE OPTION:\n\n" +
                 "1.Print all products:\n" +
                 "2.Print all products sorted by name, price or expiration date:\n" +
-                "3.Print a specific product (by id, name):\n" +
+                "3.Print a specific product (by id):\n" +
                 "4.Print all products with a price higher than or equal to a user-set price\n" +
                 "5.Print all products at a price lower than the user-set price\n" +
                 "6.Print all products with a quantity greater than or equal to a user-specified quantity\n" +

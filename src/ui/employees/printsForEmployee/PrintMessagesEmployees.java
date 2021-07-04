@@ -43,7 +43,7 @@ public class PrintMessagesEmployees {
     }
 
     public void printMessageSortProductByNameByPriceOrDate() {
-    System.out.println("Choose option:1.Sort by name\n2.Sort by price\n3.Sort by expiry date:");}
+    System.out.println("Choose option:\n1.Sort by name\n2.Sort by price\n3.Sort by expiry date:");}
 
     public void printMessageChooseMaxPrice() {
         System.out.println("Please enter a maximum price");
