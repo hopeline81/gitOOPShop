@@ -10,14 +10,14 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class ControllerProduct implements OnEventListener {
+public class ProductController implements OnEventListener {
     private final DataParserProduct dataParserProduct = new DataParserProduct();
     private final ViewListenerProductImpl viewListenerProduct = new ViewListenerProductImpl();
     private final PrintMessagesEmployees printMessagesEmployees = new PrintMessagesEmployees();
     private final FileManager fileManager = new FileManager(this);
     Scanner scanner = new Scanner(System.in);
 
-    public ControllerProduct() {
+    public ProductController() {
         FileManager fileManager = new FileManager(this);
         fileManager.readProductDataFile();
     }

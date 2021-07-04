@@ -1,6 +1,5 @@
 id,name,price,quantity,type,color,expiration_date
-1, oranges, 0.1, food,,06-07-2021
-2, toilet paper, 2.5, sanitary,,
-3, lipstick, 6.8, makeup, red, 04-02-2025
-4, dog leash, 10.3, others, blue, 
-6, brush, 3.6, makeup, white, 13.02.22
+1, oranges, 0.1, 500, food,,06-07-2021
+2, toilet paper, 2.5, 150, sanitary,,
+4, dog leash, 10.3, 6, others, blue, 
+5, breat, 1.5, 12, food,,12.02.22

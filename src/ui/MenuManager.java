@@ -3,10 +3,9 @@ package ui;
 import data.EmployeeRepository;
 import data.ProductRepository;
 import model.users.Employee;
-import ui.employees.manager.EmployeeController;
 import ui.employees.printsForEmployee.PrintMenu;
 import ui.employees.printsForEmployee.PrintMessagesEmployees;
-import ui.product.manager.ControllerProduct;
+import ui.product.manager.ProductController;
 
 import java.util.Comparator;
 import java.util.Scanner;
@@ -15,7 +14,7 @@ public class MenuManager {
     private final PrintMessagesEmployees printMessagesEmployees = new PrintMessagesEmployees();
     private final LoginMenu loginMenu = new LoginMenu();
     private final PrintMenu printMenu = new PrintMenu();
-    private final ControllerProduct controllerProduct = new ControllerProduct();
+    private final ProductController productController = new ProductController();
 
     public void chooseOptionFromMenu() {
         byte option;
@@ -24,42 +23,43 @@ public class MenuManager {
             printMenu.EmployeeMenu();
             option = input.nextByte();
             switch (option) {
-                case 1: controllerProduct.printAllProducts(ProductRepository.getInstance().provideAllProducts());
+                case 1: productController.printAllProducts(ProductRepository.getInstance().provideAllProducts());
                     break;
-                case 2:controllerProduct.printAllProductsSortedByNamePriceOrDate();
+                case 2:
+                    productController.printAllProductsSortedByNamePriceOrDate();
                     break;
                 case 3:
-                    controllerProduct.printSpecificProductById();
+                    productController.printSpecificProductById();
                     break;
                 case 4:
-                    controllerProduct.printProductsWithPriceHigherOrEqualToUserSetPrice();
+                    productController.printProductsWithPriceHigherOrEqualToUserSetPrice();
                     break;
                 case 5:
-                    controllerProduct.printProductsWithPriceLowerOrEqualToUserSetPrice();
+                    productController.printProductsWithPriceLowerOrEqualToUserSetPrice();
                     break;
                 case 6:
-                    controllerProduct.printProductsWithQualityHigherOrEqualToUserSetQuantity();
+                    productController.printProductsWithQualityHigherOrEqualToUserSetQuantity();
                     break;
                 case 7:
-                    controllerProduct.printProductsWithQualityLowerOrEqualToUserSetQuantity();
+                    productController.printProductsWithQualityLowerOrEqualToUserSetQuantity();
                     break;
                 case 8:
-                    controllerProduct.addNewProduct();
-                    controllerProduct.saveChanges();
-                    controllerProduct.printAllProducts(ProductRepository.getInstance().provideAllProducts());
+                    productController.addNewProduct();
+                    productController.saveChanges();
+                    productController.printAllProducts(ProductRepository.getInstance().provideAllProducts());
                     break;
                 case 9:
-                    controllerProduct.changeProductPrice();
+                    productController.changeProductPrice();
                     break;
                 case 10:
-                    controllerProduct.changeProductQuantity();
-                    controllerProduct.printAllProducts(ProductRepository.getInstance().provideAllProducts());
+                    productController.changeProductQuantity();
+                    productController.printAllProducts(ProductRepository.getInstance().provideAllProducts());
                     break;
                 case 11:
                     break;
                 case 12:
-                    controllerProduct.deleteSelectedProduct();
-                    controllerProduct.printAllProducts(ProductRepository.getInstance().provideAllProducts());
+                    productController.deleteSelectedProduct();
+                    productController.printAllProducts(ProductRepository.getInstance().provideAllProducts());
                     break;
                 case 13:
                     printMessagesEmployees.printMessageTypeOfSortingEmployees();
@@ -68,7 +68,7 @@ public class MenuManager {
                 case 14:
                     loginMenu.showFirstMenuOptions();
                 case 15:
-                    controllerProduct.saveChanges();
+                    productController.saveChanges();
                 default:
                     printMessagesEmployees.printMessageError();
                     chooseOptionFromMenu();
