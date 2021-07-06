@@ -2,12 +2,10 @@ package ui.product.manager;
 
 import data.*;
 import model.products.*;
-import model.users.Employee;
 import ui.employees.printsForEmployee.PrintMessagesEmployees;
 import ui.product.printsProduct.ViewListenerProductImpl;
 
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class ProductController implements OnEventListener {
@@ -23,7 +21,7 @@ public class ProductController implements OnEventListener {
     }
 
     public void printAllProducts(List<Product> products) {
-        System.out.println(dataParserProduct.parseProductToString(products));
+        viewListenerProduct.printAllProduct(products);
     }
 
     public void changeProductPrice() {
@@ -47,7 +45,7 @@ public class ProductController implements OnEventListener {
 
         String[] productLine = (String[]) currentQuantityOfProduct.toArray();
         for (int i = 0; i <= productLine.length; i++) {
-            productLine[3] = String.valueOf(newCurrentQuantity);
+            productLine[3] = newCurrentQuantity;
         }
     }
 
@@ -64,14 +62,13 @@ public class ProductController implements OnEventListener {
         products.remove(productToDeleted);
     }
 
-    public void printSpecificProductById() {
+    public void printSpecificProduct() {
         printMessagesEmployees.printMessageEnterProductID();
         int id = scanner.nextInt();
-
         ProductRepository.getInstance().provideAllProducts()
                 .stream()
                 .filter(s -> s.getProductID() == id)
-                .forEach(System.out::println);
+                .collect(Collectors.toList());
     }
 
     public void printAllProductsSortedByNamePriceOrDate() {

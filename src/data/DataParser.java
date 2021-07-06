@@ -21,7 +21,6 @@ public class DataParser {
     }
 
     private Employee parseRowToEmployee(String row) {
-
         String[] employeesRow = row.split(SPLIT_REGEX);
         String employeesId = employeesRow[0];
         String employeesFirstName = employeesRow[1];
@@ -29,13 +28,11 @@ public class DataParser {
         String employeesAge = employeesRow[3];
         String employeesSalary = employeesRow[4];
 
-        Employee result = new Employee(Integer.parseInt(employeesId)
+        return new Employee(Integer.parseInt(employeesId)
                 , employeesFirstName
                 , employeesLastName
                 , Integer.parseInt(employeesAge)
                 , Double.parseDouble(employeesSalary));
-
-        return result;
     }
 
 

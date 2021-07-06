@@ -6,6 +6,8 @@ import model.users.Employee;
 import ui.employees.printsForEmployee.PrintMenu;
 import ui.employees.printsForEmployee.PrintMessagesEmployees;
 import ui.product.manager.ProductController;
+import ui.product.printsProduct.ViewListenerProduct;
+import ui.product.printsProduct.ViewListenerProductImpl;
 
 import java.util.Comparator;
 import java.util.Scanner;
@@ -15,6 +17,7 @@ public class MenuManager {
     private final LoginMenu loginMenu = new LoginMenu();
     private final PrintMenu printMenu = new PrintMenu();
     private final ProductController productController = new ProductController();
+    private final ViewListenerProductImpl viewListenerProductImp = new ViewListenerProductImpl();
 
     public void chooseOptionFromMenu() {
         byte option;
@@ -29,7 +32,7 @@ public class MenuManager {
                     productController.printAllProductsSortedByNamePriceOrDate();
                     break;
                 case 3:
-                    productController.printSpecificProductById();
+                    productController.printSpecificProduct();
                     break;
                 case 4:
                     productController.printProductsWithPriceHigherOrEqualToUserSetPrice();

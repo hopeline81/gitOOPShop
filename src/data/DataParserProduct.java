@@ -28,36 +28,29 @@ public class DataParserProduct {
     }
 
     private Product parseRowToProduct(String row) {
-
         String[] productRow = row.split(SPLIT_REGEX);
+        int id = Integer.parseInt(productRow[0]);
+        String name = productRow[1];
+        double price = Double.parseDouble(productRow[2]);
+        int quantity = Integer.parseInt(productRow[3]);
         String type = productRow[4];
+        String color = productRow[5];
+        String expiryDate = productRow[6];
         Product result = null;
-        if(type.equals(TYPE_FOOD)) {
-            result = new Food(Integer.parseInt(productRow[0])
-                    , productRow[1]
-                    , Double.parseDouble(productRow[2])
-                    , Integer.parseInt(productRow[3])
-                    , productRow[6]);
-        }else if(type.equals(TYPE_MAKEUP)) {
-            result = new Makeup(Integer.parseInt(productRow[0])
-                    , productRow[1]
-                    , Double.parseDouble(productRow[2])
-                    , Integer.parseInt(productRow[3])
-                    , productRow[5]
-                    , productRow[6]);
-
-        }else if(type.equals(TYPE_OTHERS)) {
-            result = new Others(Integer.parseInt(productRow[0])
-                    , productRow[1]
-                    , Double.parseDouble(productRow[2])
-                    , Integer.parseInt(productRow[3])
-                    , productRow[5]);
-
-        }else if(type.equals(TYPE_SANITARY)) {
-            result = new Sanitary(Integer.parseInt(productRow[0])
-                    , productRow[1]
-                    , Double.parseDouble(productRow[2])
-                    , Integer.parseInt(productRow[3]));
+        switch (type) {
+            case TYPE_FOOD:
+                result = new Food(id, name, price, quantity, expiryDate);
+                break;
+            case TYPE_MAKEUP:
+                result = new Makeup(id, name, price, quantity, color, expiryDate);
+                break;
+            case TYPE_OTHERS:
+                result = new Others(id, name, price, quantity, color);
+                break;
+            case TYPE_SANITARY:
+                result = new Sanitary(id, name, price, quantity);
+                break;
+            default:
         }
         return result;
     }
@@ -72,33 +65,25 @@ public class DataParserProduct {
 
     private String parseProduct(Product product) {
         String result = "";
+        int id = product.getProductID();
+        String name = product.getProductName();
+        double price = product.getProductPrice();
+        int quantity = product.getQuantity();
         if(product instanceof Food) {
-            result = product.getProductID() + ", "
-                    + product.getProductName() + ", "
-                    + product.getProductPrice() + ", "
-                    + product.getQuantity() + ", "
+            result = id + ", " + name + ", " + price + ", " + quantity + ", "
                     + TYPE_FOOD + ",,"
                     + ((Food) product).getExpiration_date();
         }else if(product instanceof Makeup) {
-            result = product.getProductID() + ", "
-                    + product.getProductName() + ", "
-                    + product.getProductPrice() + ", "
-                    + product.getQuantity() + ", "
+            result = id + ", " + name + ", " + price + ", " + quantity + ", "
                     + TYPE_MAKEUP + ", "
                     + ((Makeup) product).getColor() + ", "
                     + ((Makeup) product).getExpiration_date();
         }else if(product instanceof Others) {
-            result = product.getProductID() + ", "
-                    + product.getProductName() + ", "
-                    + product.getProductPrice() + ", "
-                    + product.getQuantity() + ", "
+            result = id + ", " + name + ", " + price + ", " + quantity + ", "
                     + TYPE_OTHERS + ", "
                     + ((Others) product).getColor() + ", ";
         }else if(product instanceof Sanitary) {
-            result = product.getProductID() + ", "
-                    + product.getProductName() + ", "
-                    + product.getProductPrice() + ", "
-                    + product.getQuantity() + ", "
+            result = id + ", " + name + ", " + price + ", " + quantity + ", "
                     + TYPE_SANITARY + ",,";
         }
         return result;
