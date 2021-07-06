@@ -32,7 +32,7 @@ public class MenuManager {
                     productController.printAllProductsSortedByNamePriceOrDate();
                     break;
                 case 3:
-                    productController.printSpecificProduct();
+                    productController.printSpecificProductById();
                     break;
                 case 4:
                     productController.printProductsWithPriceHigherOrEqualToUserSetPrice();

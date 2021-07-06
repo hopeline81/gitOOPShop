@@ -28,29 +28,36 @@ public class DataParserProduct {
     }
 
     private Product parseRowToProduct(String row) {
+
         String[] productRow = row.split(SPLIT_REGEX);
-        int id = Integer.parseInt(productRow[0]);
-        String name = productRow[1];
-        double price = Double.parseDouble(productRow[2]);
-        int quantity = Integer.parseInt(productRow[3]);
         String type = productRow[4];
-        String color = productRow[5];
-        String expiryDate = productRow[6];
         Product result = null;
-        switch (type) {
-            case TYPE_FOOD:
-                result = new Food(id, name, price, quantity, expiryDate);
-                break;
-            case TYPE_MAKEUP:
-                result = new Makeup(id, name, price, quantity, color, expiryDate);
-                break;
-            case TYPE_OTHERS:
-                result = new Others(id, name, price, quantity, color);
-                break;
-            case TYPE_SANITARY:
-                result = new Sanitary(id, name, price, quantity);
-                break;
-            default:
+        if(type.equals(TYPE_FOOD)) {
+            result = new Food(Integer.parseInt(productRow[0])
+                    , productRow[1]
+                    , Double.parseDouble(productRow[2])
+                    , Integer.parseInt(productRow[3])
+                    , productRow[6]);
+        }else if(type.equals(TYPE_MAKEUP)) {
+            result = new Makeup(Integer.parseInt(productRow[0])
+                    , productRow[1]
+                    , Double.parseDouble(productRow[2])
+                    , Integer.parseInt(productRow[3])
+                    , productRow[5]
+                    , productRow[6]);
+
+        }else if(type.equals(TYPE_OTHERS)) {
+            result = new Others(Integer.parseInt(productRow[0])
+                    , productRow[1]
+                    , Double.parseDouble(productRow[2])
+                    , Integer.parseInt(productRow[3])
+                    , productRow[5]);
+
+        }else if(type.equals(TYPE_SANITARY)) {
+            result = new Sanitary(Integer.parseInt(productRow[0])
+                    , productRow[1]
+                    , Double.parseDouble(productRow[2])
+                    , Integer.parseInt(productRow[3]));
         }
         return result;
     }

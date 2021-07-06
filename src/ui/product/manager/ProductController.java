@@ -62,13 +62,16 @@ public class ProductController implements OnEventListener {
         products.remove(productToDeleted);
     }
 
-    public void printSpecificProduct() {
+    public void printSpecificProductById() {
         printMessagesEmployees.printMessageEnterProductID();
         int id = scanner.nextInt();
+        printMessagesEmployees.printMessageEnterProductName();
+        String name = scanner.next();
+
         ProductRepository.getInstance().provideAllProducts()
                 .stream()
-                .filter(s -> s.getProductID() == id)
-                .collect(Collectors.toList());
+                .filter(s -> s.getProductID() == id && s.getProductName().equals(name))
+                .forEach(System.out::println);
     }
 
     public void printAllProductsSortedByNamePriceOrDate() {
